@@ -30,11 +30,7 @@ namespace WebApiProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //var builder = new SqlConnectionStringBuilder(
-            //    Configuration.GetConnectionString("Default"));
-            //builder.Password = Configuration.GetSection("DBPassword").Value;
-
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LibraryManager")));
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LIve")));
             services.AddControllers();
             services.AddCors();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -84,7 +80,8 @@ namespace WebApiProject
             app.UseAuthentication();
 
             app.UseAuthorization();
-
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

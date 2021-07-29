@@ -96,6 +96,7 @@ namespace WebApiProject.Data
 
             dataContext.AddRange(authors);
             dataContext.Users.Add(user);
+            dataContext.SaveChanges();
         }
 
     }
